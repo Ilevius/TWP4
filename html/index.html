@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <title>TWP3</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+ <body>
+
+    <div id="wrapper">
+        <div id="header">
+            <nav><span><a href="users.html">Кадры</a></span><span><a href="works.html">Works</a></span></nav>
+            
+        </div>
+        <div id="bars" class="row">
+            <div id="sidebar-left">
+                <div class="panel">
+                    <div class="panel-header">Левая панель</div>
+                    {{loadTemplates()}} 
+                    <br>
+                    <div id="subjectsList">
+                        <ul>
+                            <li v-for = '(subject, idx) in subjects'> 
+                                {{subject.name}} <button class = "btn-del" v-on:click = "deleteSubject(subject.ID)">Х</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    
+                    <div id="templatesList">
+                        <ul>
+                            <li v-for = '(template, idx) in templates'> 
+                                <span v-on:click = "openTemplate(template.ID)"> {{template.title}} </span>  <button class = "btn-del" v-on:click = "deleteTemplate(template.ID)">Х</button>
+                            </li>
+                        </ul>
+                    </div>
+     
+                    <hr>
+                    <input type="text" 
+                    id = "subjectNameInput" 
+                     
+                    placeholder="Введите название дисциплины" 
+                    v-on:input = "inputSubjectName"  
+                    minlength="20" 
+                    size="14">
+                    <button class="btn-add" v-on:click="addNewSubject">+</button>
+                </div>
+            </div>
+            <div id="middle">
+                <div class="panel">
+                    <div class="panel-header">Редактор работ: Новая работа, не сохранена на сервере.</div>
+
+                    <input type="text" id="workTitle" placeholder="Введите название работы"  minlength="20" size="14" v-on:input = "inputTemplateTitle" v-bind:value = 'templateTitle'>
+                    <div class="row" id = "WorkEditor">
+                        
+                        <div id="tasklist">
+                            <ol>
+                                <li v-for = '(task, idx) in tasks'> 
+                                    <textarea 
+                                    name="" 
+                                    v-bind:id="idx" 
+                                    cols="60" 
+                                    rows="10"
+                                    type="text" 
+                                    placeholder="Введите текст задания"
+                                    v-on:input = "changeTask" 
+                                    v-on:input = "MakePreview" 
+                                    >{{task}}</textarea>
+
+                                    <button class = "btn-del" v-on:click = "DeleteTask(idx)">X</button>
+                                </li>
+                            </ol>
+                            <hr>
+                            <button class="btn-add" v-on:click = "adNewTask">Добавить задание</button> 
+                            <button v-on:click = "addNewTemplate" >Сохранить работу</button>
+                        </div>
+
+                        <div id="tasklist-preview" v-html = 'PreviewContent'>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar-right">
+                <div class="panel">
+                    <div class="panel-header">Правая панель</div>
+                    <p><button v-on:click = "testMethod" >Кнопка для тестов</button></p>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <p>
+                When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
+              </p>
+        </div>
+    </div>
+
+
+
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+ </body>
+</html>

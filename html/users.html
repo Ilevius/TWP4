@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <title>TWP3</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+ <body>
+
+    <div id="wrapper">
+        <div id="header">
+            <nav><span><a href="index.html">Шаблоны</a></span><span><a href="works.html">Works</a></span></nav>
+            
+        </div>
+        <div id="bars" class="row">
+            <div id="sidebar-left">
+                <div class="panel">
+                    <div class="panel-header">Левая панель</div>
+                    <br>
+                    <div id="subjectsList">
+                        <ul>
+                            <span v-if="!allGroups.length">Здесь появится список групп!</span>
+                            <li v-for = '(group) in allGroups' v-on:click = 'openGroup(group.ID)'> 
+                                {{group.name}} 
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <hr>
+                </div>
+            </div>
+            <div id="middle">
+                <div class="panel">
+                    <div class="panel-header">Управление группами и студентами</div>
+
+                    <input type="text" id="workTitle" placeholder="Введите название группы"  minlength="20" size="14" v-on:input = "inputGroupName" v-bind:value = 'curentGroup.name'>
+                    <div class="row" id = "WorkEditor">
+                        <div id="aGroup">
+                            <ol>
+                                <li v-for = '(user, idx) in curentGroup.users'> 
+                                    <input type="text" v-bind:id="idx" class="username" placeholder="Введите имя студента"  minlength="20" size="14" v-on:input = "userPropEdit" v-bind:value = 'user.name'>
+                                    <input type="text" v-bind:id="idx" class="usersurname" placeholder="Введите фамилию студента"  minlength="20" size="14" v-on:input = "userPropEdit" v-bind:value = 'user.surname'>
+                                    <button class = "btn-del" v-on:click = "deleteUser({idx:idx, id: user.ID, fio: user.surname+' '+user.name})">X</button>
+                                </li>
+                            </ol>
+                            <hr>
+                            <button class="btn-add" v-on:click = "addNewUser">Добавить студента</button> 
+                            <button v-on:click = "addGroup" >Сохранить группу</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar-right">
+                <div class="panel">
+                    <div class="panel-header">Правая панель</div>
+                    <p><button v-on:click = "testMethod" >Кнопка для тестов</button></p>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <p>
+                When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
+              </p>
+        </div>
+    </div>
+
+
+
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="users.js"></script>
+ </body>
+</html>
