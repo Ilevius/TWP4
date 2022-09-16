@@ -28,6 +28,7 @@
                             <li v-for = '(group) in allGroups' v-on:click = 'openGroup(group.ID)'> 
                                 {{group.name}} 
                             </li>
+                            <p><button class="btn-add" v-if="curentGroup.id" v-on:click = "addGroupMenu">Добавить группу</button> </p>
                         </ul>
                     </div>
                     <hr>
@@ -51,6 +52,7 @@
                             <hr>
                             <button class="btn-add" v-on:click = "addNewUser">Добавить студента</button> 
                             <button v-on:click = "addGroup" >Сохранить группу</button>
+                            <button v-if="curentGroup.id" v-on:click = "deleteGroup(curentGroup.id)" class="btn-del">Удалить группу</button>
                         </div>
 
                     </div>

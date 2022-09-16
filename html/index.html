@@ -3,10 +3,7 @@
  <head>
   <meta charset="utf-8" />
   <title>TWP3</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -21,15 +18,8 @@
             <div id="sidebar-left">
                 <div class="panel">
                     <div class="panel-header">Левая панель</div>
-                    {{loadTemplates()}} 
                     <br>
-                    <div id="subjectsList">
-                        <ul>
-                            <li v-for = '(subject, idx) in subjects'> 
-                                {{subject.name}} <button class = "btn-del" v-on:click = "deleteSubject(subject.ID)">Х</button>
-                            </li>
-                        </ul>
-                    </div>
+
                     <hr>
                     
                     <div id="templatesList">
@@ -38,6 +28,8 @@
                                 <span v-on:click = "openTemplate(template.ID)"> {{template.title}} </span>  <button class = "btn-del" v-on:click = "deleteTemplate(template.ID)">Х</button>
                             </li>
                         </ul>
+                        <hr>
+                        <p><button class="btn-add" v-if="currentTemplate.ID" v-on:click = "newTemplateMenu">Добавить шаблон</button> </p>
                     </div>
      
                     <hr>
@@ -55,7 +47,7 @@
                 <div class="panel">
                     <div class="panel-header">Редактор работ: Новая работа, не сохранена на сервере.</div>
 
-                    <input type="text" id="workTitle" placeholder="Введите название работы"  minlength="20" size="14" v-on:input = "inputTemplateTitle" v-bind:value = 'templateTitle'>
+                    <input type="text" id="workTitle" placeholder="Введите название работы"  minlength="20" size="14" v-on:input = "inputTemplateTitle" v-bind:value = 'currentTemplate.title'>
                     <div class="row" id = "WorkEditor">
                         
                         <div id="tasklist">
@@ -70,14 +62,14 @@
                                     placeholder="Введите текст задания"
                                     v-on:input = "changeTask" 
                                     v-on:input = "MakePreview" 
-                                    >{{task}}</textarea>
+                                    >{{task.body}}</textarea>
 
                                     <button class = "btn-del" v-on:click = "DeleteTask(idx)">X</button>
                                 </li>
                             </ol>
                             <hr>
                             <button class="btn-add" v-on:click = "adNewTask">Добавить задание</button> 
-                            <button v-on:click = "addNewTemplate" >Сохранить работу</button>
+                            <button v-on:click = "saveTemplate" >Сохранить работу</button>
                         </div>
 
                         <div id="tasklist-preview" v-html = 'PreviewContent'>
@@ -104,7 +96,10 @@
 
 
 
-    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>
  </body>

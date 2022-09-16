@@ -81,6 +81,17 @@ const WorkEditor = {
             this.curentGroup.users = users
         },
 
+        addGroupMenu(){
+            this.curentGroup = {id:'', name:'', users: [], comment: ''}
+        },
+
+        deleteGroup(id){
+            this.DBask('delete from groups where id =?', [id]).then(()=>{
+                this.loadGroups()
+                this.addGroupMenu()
+            })
+        },
+
     //                      Student CRUD    
         addNewUser(){
             nude = {ID: '', name:'', surname:''}
