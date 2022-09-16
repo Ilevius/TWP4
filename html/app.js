@@ -69,11 +69,30 @@ const WorkEditor = {
         },
 
         adNewTask(){
-            this.tasks.push({body: `return {ask: '', ans: ''}`})
+            let body = `
+let a = randInt(-10,10)
+let b = randInt(1, 10)
+
+let ask = \`Найдите квадрат модуля числа \\\\( \$\{a\}\ + \$\{b\}\i \\\\) \`
+let ans = a**2+b**2
+            
+return {ask: ask, ans: ans}`
+            this.tasks.push({body: body})
+            this.MakePreview()
         },
 
         DeleteTask(idx){
-            this.tasks.splice(idx, 1)
+            if(confirm('Удалить упражнение?')){
+                if(this.currentTemplate.ID){
+                    this.DBask('delete from templates_exercises where template=? and exercise =?', [this.currentTemplate.ID, this.tasks[idx].ID]).then(()=>{
+                        this.openTemplate(this.currentTemplate.ID)
+                    })
+                }
+                else{
+                    this.tasks.splice(idx, 1)
+                    this.MakePreview()
+                }
+            }
         },
 
 
