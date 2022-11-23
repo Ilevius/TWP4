@@ -1,0 +1,255 @@
+let a1 = randInt(-5,5)
+let a2 = randInt(-5,5)
+let a3 = randInt(-5,5)
+
+let b1 = randInt(-5, 5)
+let b2 = randInt(-5, 5)
+let b3 = randInt(-5, 5)
+
+
+nerdamer.setVar('abDot', `${a1*b1+a2*b2+a3*b3}`)
+nerdamer.setVar('absa', `sqrt(${a1*a1+a2*a2+a3*a3})`)
+nerdamer.setVar('absb', `sqrt(${b1*b1+b2*b2+b3*b3})`)
+
+let denominator = nerdamer('abDot/(absa*absb)')
+denominator = denominator.toTeX()
+
+
+let ask = `Найдите
+значение
+параметра \\(\\lambda\\)
+при котором
+косинус угла
+между
+векторами \\(\\overline{a}(${a1};\\lambda;${a3}), \\overline{b}(${b1};${b2};${b3})\\)
+равен \\(${denominator}.\\)`
+
+let ans = a2
+
+ 
+return {ask: ask, ans: ans}
+
+
+
+
+
+let a1 = randInt(-5,5)
+let a2 = randInt(-5,5)
+let a3 = randInt(-5,5)
+
+let b1 = randInt(-5, 5)
+let b2 = randInt(-5, 5)
+let b3 = randInt(-5, 5)
+
+let c1 = randInt(-5, 5)
+let c2 = randInt(-5, 5)
+let c3 = randInt(-5, 5)
+
+nerdamer.setVar('M', `matrix([${a1},${a2},${a3}], [${b1},${b2},${b3}], [${c1},${c2},${c3}])`);
+leftPart = nerdamer('determinant(M)');
+
+
+nerdamer.setVar('v1', `${a1}i+${a2}j+${a3}*k`)
+nerdamer.setVar('v2', `${b1}*i+x*j+${b3}*k`)
+nerdamer.setVar('v3', `${c1}*i+${c2}*j+${c3}*k`)
+
+let v1 = nerdamer('v1').toTeX()
+let v2 = nerdamer('v2').toTeX()
+let v3 = nerdamer('v3').toTeX()
+
+v1= v1.replaceAll('i','\\overline{i}')
+v1= v1.replaceAll('j','\\overline{j}')
+v1= v1.replaceAll('k','\\overline{k}')
+
+v2= v2.replaceAll('i','\\overline{i}')
+v2= v2.replaceAll('j','\\overline{j}')
+v2= v2.replaceAll('k','\\overline{k}')
+
+v3= v3.replaceAll('i','\\overline{i}')
+v3= v3.replaceAll('j','\\overline{j}')
+v3= v3.replaceAll('k','\\overline{k}')
+
+
+
+let ask = `Решите уравнение (в векторной форме) 
+\\((${v1})\\times(${v2})\\cdot(${v3})\\) = ${leftPart.toString()}.`
+
+
+let ans = b2
+
+
+
+        
+
+    
+return {ask: ask, ans: ans}
+
+
+let c1 = randInt(-5, 5)
+let c2 = randInt(-5, 5)
+
+let a1 = randInt(1,9)*(-1)**randInt(1,3)
+let aMod = Math.abs(a1)+1
+let randOne = (-1)**randInt(1,3)
+nerdamer.setVar('a2', `${c2}+${randOne }*sqrt( ${aMod**2}- ${a1**2})`)
+
+let b2 = randInt(1,9)*(-1)**randInt(1,3)
+let bMod = Math.abs(b2)+1
+randOne = (-1)**randInt(1,3)
+nerdamer.setVar('b1', `${randOne }*sqrt( ${bMod**2}- ${b2**2})`)
+
+let a2 = nerdamer('a2').toTeX()
+let b1 = nerdamer('b1').toTeX()
+
+
+let ask = `Даны точки
+\\(A(${a1+c1};${a2}),B(${b1};${b2+c2}),C(${c1};${c2})\\). Найдите
+координаты
+вектора \\(\\overline{CM}\\),
+если
+известно,
+что \\(\\angle ACM=\\angle MCB\\).`
+
+nerdamer.setVar('x', `${a1}`)
+
+let ans = a1
+            
+return {ask: ask, ans: ans}
+
+
+
+
+
+
+
+
+bullshitering
+
+
+let a1 = randInt(-5,5)
+let a2 = randInt(-5,5)
+let a3 = randInt(-5,5)
+
+let b1 = randInt(-5, 5)
+let b2 = randInt(-5, 5)
+let b3 = randInt(-5, 5)
+
+
+nerdamer.setVar('abDot', `${a1*b1+a2*b2+a3*b3}`)
+nerdamer.setVar('absa', `sqrt(${a1*a1+a2*a2+a3*a3})`)
+nerdamer.setVar('absb', `sqrt(${b1*b1+b2*b2+b3*b3})`)
+
+let denominator = nerdamer('abDot/(absa*absb)')
+denominator = denominator.toTeX()
+
+
+let ask = `Найдите
+значение
+параметра \\(\\lambda\\)
+при котором
+косинус угла
+между
+векторами \\(\\overline{a}(${a1};\\lambda;${a3}), \\overline{b}(${b1};${b2};${b3})\\)
+равен \\(${denominator}.\\)`
+
+let ans = a2
+
+ 
+return {ask: ask, ans: ans}
+
+
+
+
+
+
+
+
+
+let c1 = randInt(-5, 5)
+let c2 = randInt(-5, 5)
+
+let a1 = randInt(1,9)*(-1)**randInt(1,3)
+let aMod = Math.abs(a1)+1
+let randOne = (-1)**randInt(1,3)
+nerdamer.setVar('a2', `${randOne }*sqrt( ${aMod**2}- ${a1**2})`)
+
+let b2 = randInt(1,9)*(-1)**randInt(1,3)
+let bMod = Math.abs(b2)+1
+randOne = (-1)**randInt(1,3)
+nerdamer.setVar('b1', `${randOne }*sqrt( ${bMod**2}- ${b2**2})`)
+
+let a2Coord = nerdamer(`a2+${c2}`)
+let b1Coord = nerdamer(`b1+${c1}`)
+
+let lambda = nerdamer(`${aMod}/${bMod}`)
+
+//nerdamer.setVar('x', `(${a1+c1}+${lambda}*b1Coord )/(1+${lambda})`)
+
+let ask = `Даны точки
+\\(A(${a1+c1};${a2Coord.toTeX()}),B(${b1Coord.toTeX()};${b2+c2}),C(${c1};${c2})\\). Найдите
+координаты
+вектора \\(\\overline{CM}\\),
+если
+известно,
+что \\(\\angle ACM=\\angle MCB\\).`
+
+
+let huyans = 1
+           
+return {ask: ask, ans: huyans}
+
+
+
+let a1 = randInt(-5,5)
+let a2 = randInt(-5,5)
+let a3 = randInt(-5,5)
+
+let b1 = randInt(-5, 5)
+let b2 = randInt(-5, 5)
+let b3 = randInt(-5, 5)
+
+let c1 = randInt(-5, 5)
+let c2 = randInt(-5, 5)
+let c3 = randInt(-5, 5)
+
+nerdamer.setVar('M', `matrix([${a1},${a2},${a3}], [${b1},${b2},${b3}], [${c1},${c2},${c3}])`);
+leftPart = nerdamer('determinant(M)');
+
+
+nerdamer.setVar('v1', `${a1}i+${a2}j+${a3}*k`)
+nerdamer.setVar('v2', `${b1}*i+x*j+${b3}*k`)
+nerdamer.setVar('v3', `${c1}*i+${c2}*j+${c3}*k`)
+
+let v1 = nerdamer('v1').toTeX()
+let v2 = nerdamer('v2').toTeX()
+let v3 = nerdamer('v3').toTeX()
+
+
+v1= v1.replaceAll('i','\\overline{i}')
+v1= v1.replaceAll('j','\\overline{j}')
+v1= v1.replaceAll('k','\\overline{k}')
+
+v2= v2.replaceAll('i','\\overline{i}')
+v2= v2.replaceAll('j','\\overline{j}')
+v2= v2.replaceAll('k','\\overline{k}')
+
+v3= v3.replaceAll('i','\\overline{i}')
+v3= v3.replaceAll('j','\\overline{j}')
+v3= v3.replaceAll('k','\\overline{k}')
+
+
+
+let ask = `Решите уравнение (в векторной форме) 
+\\((${v1})\\times(${v2})\\cdot(${v3})
+ = ${leftPart.toString()}\\).`
+
+
+let ans = b2
+
+
+
+        
+
+    
+return {ask: ask, ans: ans}
+

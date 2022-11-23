@@ -38,7 +38,7 @@
                             <div id="inputAnswer" v-else>
                                 <ol >
                                     <li v-for = 'task in chekItem.answers' class="li-inline">
-                                        <span v-if = "task.answer == task.rightanswer" class="right-answer">{{task.answer}}</span>
+                                        <span v-if = "parseInt(task.answer,10) == parseInt(task.rightanswer, 10)" class="right-answer">{{task.answer}}</span>
                                         <span v-else class="wrong-answer">{{task.answer}}</span> 
                                         <span> {{task.rightanswer}}</span>
                                     </li>
@@ -131,5 +131,6 @@
     
     <script src="https://unpkg.com/vue@next"></script>
     <script src="works.js"></script>
+    <script src="all.min.js"></script> <!-- assuming you've saved the file in the root -->;
  </body>
 </html>

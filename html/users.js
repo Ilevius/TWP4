@@ -86,10 +86,12 @@ const WorkEditor = {
         },
 
         deleteGroup(id){
-            this.DBask('delete from groups where id =?', [id]).then(()=>{
-                this.loadGroups()
-                this.addGroupMenu()
-            })
+            if(confirm('Вы уверены, что хотите удалить группу?')){
+                this.DBask('delete from groups where id =?', [id]).then(()=>{
+                    this.loadGroups()
+                    this.addGroupMenu()
+                })
+            }
         },
 
     //                      Student CRUD    
@@ -140,12 +142,22 @@ const WorkEditor = {
 
 Vue.createApp(WorkEditor).mount('#bars')
 
-/*            this.DBask('SELECT * FROM users_groups',[]).then(res=>{
-                
-                console.log(res.rows.length)
-            }, error=>{
-                console.log(error)
-            })
-            
-            CREATE TABLE tasks (ID Integer PRIMARY KEY AUTOINCREMENT, student Integer, ask text, rightanswer text, answer text, work Integer, date Integer
-            */
+
+
+
+  
+
+
+/* 
+"CREATE TABLE groups (ID Integer PRIMARY KEY AUTOINCREMENT, name text)"
+"CREATE TABLE users (ID Integer PRIMARY KEY AUTOINCREMENT, name text, surname text)" 
+"CREATE TABLE users_groups (ID Integer PRIMARY KEY AUTOINCREMENT, usr integer, grp integer)"
+
+"CREATE TABLE templates (ID Integer PRIMARY KEY AUTOINCREMENT, title text)"
+"CREATE TABLE exercises (ID Integer PRIMARY KEY AUTOINCREMENT, body text)"
+"CREATE TABLE templates_exercises (ID Integer PRIMARY KEY AUTOINCREMENT, template integer, exercise integer)"
+
+"CREATE TABLE works (ID Integer PRIMARY KEY AUTOINCREMENT, name text, grp integer, template integer, date text)"
+"CREATE TABLE tasks (ID Integer PRIMARY KEY AUTOINCREMENT, student Integer, ask text, rightanswer text, answer text, work Integer, date Integer)"
+*/
+

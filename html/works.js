@@ -1,3 +1,8 @@
+const randInt = (min, max)=>{
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+
 const WorkEditor = {
     data() {
         return {
@@ -94,8 +99,9 @@ const WorkEditor = {
                 for(var j = 0; j < theseExercises.rows.length; j++){
                     let thisExercise = theseExercises.rows.item(j)
                     let taskRender = new Function(thisExercise.body)
-                    let ask =  taskRender().ask
-                    let rightanswer = taskRender().ans                    
+                    let theTask = taskRender()
+                    let ask =  theTask.ask
+                    let rightanswer = theTask.ans                    
                     this.DBask('insert into tasks (student, work, ask, rightanswer) values (?, ?, ?, ?)',[thisUserId, thisWorkId, ask, rightanswer])
                 }
             }

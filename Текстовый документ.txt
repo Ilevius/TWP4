@@ -1,0 +1,116 @@
+let x1 = randInt(-10,10)
+let y1 = randInt(-10,10)
+let z1 = randInt(-10,10)
+
+let x2 = randInt(-10,10)
+let y2 = randInt(-10,10)
+let z2 = randInt(-10,10)
+
+let x3 = x1 + randInt(1,9)
+let y3 = y1 + randInt(1,9)
+let z3 = z1 + randInt(1,9)
+
+let m = nerdamer(`(${x2}-${x1})/(${x3}-${x1})`)
+
+let a = nerdamer(`${m}*(${y3}-${y1})+${y1}`)
+
+let b = nerdamer(`${m}*(${z3}-${z1})+${z1}`)
+
+let ask = `При каких \\(a,b\\)
+точки \\(A(${x1};${y1};${z1}),B(${x2};a;b),C(${x3},${y3},${z3})\\)
+не могут
+являться
+вершинами
+треугольника?
+В ответе
+напишите
+сумму \\(a\\) и \\(b.\\) `
+let ans = Math.trunc(a+b)           
+return {ask: ask, ans: ans}  
+
+
+
+let b = randInt(1,15)
+let c = randInt(1, 15)
+let m = c*c + b*b
+
+let ask = `Найти \\(m\\) если
+сумма
+расстояний
+от любой
+точки
+удовлетворяющей
+уравнению 
+\\(\\frac{x^{2}}{m}+\\frac{y^{2}}{${b*b}}=1\\)
+до
+точек \\(A,B\\) есть
+величина
+постоянная,
+при этом \\(AB=${2*c}\\)`
+let ans = m
+            
+return {ask: ask, ans: ans}
+
+
+
+
+
+let y = randInt(-10,10)
+let p = randInt(1, 10)
+let x = nerdamer(`${y*y}/(${2*p})`)
+x = x.evaluate()
+
+let ask = `Найдите \\(p,\\)
+если
+уравнение
+кривой,
+проходящей
+через точку
+\\(A(${x.toTeX()};${y})\\) имеет вид
+\\(y^{2}=2px.\\)`
+let ans = p
+
+            
+return {ask: ask, ans: ans}
+
+
+
+let a = randInt(-10,10)
+let b = randInt(1, 10)
+
+let ask = `При каком \\(\\lambda\\)
+цилиндрическая
+поверхность
+пройдет
+через точку
+\\(M(1;\\lambda;4),\\) если ее
+уравнение
+совпадает с
+уравнением
+гиперболы
+имеющей
+действительную
+ось ${b} и фокусы
+\\(F_{1}(  -7;0)  ,F_{2}(  7;0)  .\\)`
+let ans = a**2+b**2
+            
+return {ask: ask, ans: ans}
+
+
+
+let a = randInt(-10,10)
+let b = randInt(1, 10)
+
+let ask = `При каком \\(\\lambda\\)
+точка \\(T(\\lambda,-1,2)\\)
+лежит на
+прямой
+проходящей
+через точку
+\\(M(1;2;3)\\)
+перпендикулярно
+прямой \\(AB\\) если
+\\(A(-4;2;2),B(0;2;1)\\) ?`
+let ans = a**2+b**2
+            
+return {ask: ask, ans: ans}

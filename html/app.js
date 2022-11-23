@@ -2,6 +2,42 @@ const randInt = (min, max)=>{
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
+
+const makeTriplet = n =>{
+    let triplets = [
+        [1, 2, 2],
+        [1, 4, 8],
+        [2, 3, 6],
+        [2, 4, 4]
+    ]
+
+    const shuffleArray = array => {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    let output = []
+
+    for (let j = 1; j<n+1; j++){
+        indexer = randInt(0, triplets.length)
+        output.push(triplets[indexer])
+        triplets.splice(indexer, 1)
+    }
+
+
+
+
+
+    return output
+}
+
+
+
+
 const WorkEditor = {
     data() {
         return {
@@ -47,10 +83,11 @@ const WorkEditor = {
             {
                 this.PreviewContent += '<li>'
                 let taskRender = new Function (this.tasks[i].body)
-                this.PreviewContent += taskRender().ask
+                let theTask = taskRender()
+                this.PreviewContent += theTask.ask
                 this.PreviewContent += '<br>'
                 this.PreviewContent += '<strong>Ответ: </strong>'
-                this.PreviewContent += taskRender().ans
+                this.PreviewContent += theTask.ans
                 this.PreviewContent += '</li>'
             }
             this.PreviewContent += '</ol>'
@@ -238,6 +275,8 @@ return {ask: ask, ans: ans}`
 //                          Other options
 
         testMethod(){
+
+            
             MathJax.typesetPromise().then(()=>{
                 console.log('Typeseted!')
             })
